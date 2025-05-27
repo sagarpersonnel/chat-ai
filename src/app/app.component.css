@@ -1,0 +1,110 @@
+/* Ensure everything stretches full height without gaps */
+html, body, app-root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .blur-bg {
+    position: fixed;
+    inset: 0; /* replaces top: 0; left: 0; bottom: 0; right: 0; */
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .blur-bg::before,
+  .blur-bg::after {
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at 30% 30%, #ff2c75, transparent 60%),
+                radial-gradient(circle at 70% 70%, #00cfff, transparent 60%);
+    filter: blur(100px);
+    animation: animate-bg 20s infinite linear alternate;
+    opacity: 0.3;
+  }
+  
+  @keyframes animate-bg {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-10%, 10%);
+    }
+    100% {
+      transform: translate(10%, -10%);
+    }
+  }
+  
+  .content-wrapper {
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+  }
+  
+  .greeting {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #eaeaea;
+  }
+  
+  .search-bar {
+    background: white;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    width: 600px;
+    max-width: 90%;
+    padding: 10px 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 32px;
+  }
+  
+  .left-icons,
+  .right-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .left-icons {
+    margin-right: 10px;
+  }
+  
+  .right-icons {
+    margin-left: 10px;
+  }
+  
+  .left-icons button,
+  .right-icons button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .response-box {
+    margin-top: 20px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+  }
+  

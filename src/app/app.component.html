@@ -1,0 +1,28 @@
+<div class="blur-bg">
+  <div class="content-wrapper">
+    <h2 class="greeting">How can I help, Sagar?</h2>
+
+    <div class="search-bar">
+      <div class="left-icons">
+        <button title="Add">➕</button>
+        <button title="Tools">⚙️</button>
+      </div>
+
+      <input
+        type="text"
+        [(ngModel)]="query"
+        placeholder="Ask anything"
+        (keyup.enter)="send()"
+      />
+
+      <div class="right-icons">
+        <button title="Mic">🎤</button>
+        <button title="Audio">🎧</button>
+      </div>
+    </div>
+
+    <div *ngIf="response" class="response-box">
+      {{ response }}
+    </div>
+  </div>
+</div>
